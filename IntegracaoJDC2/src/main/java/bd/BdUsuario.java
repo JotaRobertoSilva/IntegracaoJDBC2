@@ -17,14 +17,7 @@ public class BdUsuario {
         Connection conn = null;
         
         
-        /*
-        String umNome;
-        int umIdade;
-        String umDepartamento;
-        String umCidade;
-        String umEstado;
-*/
-  
+        
        Usuario user = new Usuario();
         
         Scanner input = new Scanner(System.in);
@@ -42,7 +35,7 @@ public class BdUsuario {
         user.setCidade(input.nextLine());
 
         System.out.print("Estado: ");
-        user.setEstado(input.nextLine());
+        user.setEstado(input.next());
 
         String sql = "INSERT INTO CADPESSOA(NOME,DEPARTAMENTO,IDADE,CIDADE,ESTADO) VALUES(?,?,?,?,?)";
         try {
