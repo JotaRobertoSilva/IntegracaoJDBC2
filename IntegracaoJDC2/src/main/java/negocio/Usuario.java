@@ -8,7 +8,7 @@ public class Usuario {
         private String departamento;
         private int idade;
         private String cidade;
-        private String estado;
+       
 
     public int getIdnome() {
         return idnome;
@@ -50,13 +50,7 @@ public class Usuario {
         this.cidade = cidade;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+   
         
         
 }
