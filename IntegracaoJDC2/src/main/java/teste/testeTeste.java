@@ -33,9 +33,8 @@ public class testeTeste {
 
       if (opcao == 1) {
         bd.inserir();
-        //instancia.listarPessoas();
       } else if (opcao == 2) {
-        //instancia.incluirPessoa();
+        bd.read();
       } else if (opcao == 9) {
         System.exit(0);
       } else {
