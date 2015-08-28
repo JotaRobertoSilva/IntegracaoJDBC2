@@ -34,8 +34,7 @@ public class BdUsuario {
         System.out.print("Cidade: ");
         user.setCidade(input.nextLine());
 
-        System.out.print("Estado: ");
-        user.setEstado(input.next());
+        
 
         String sql = "INSERT INTO CADPESSOA(NOME,DEPARTAMENTO,IDADE,CIDADE,ESTADO) VALUES(?,?,?,?,?)";
         try {
@@ -45,8 +44,7 @@ public class BdUsuario {
             stmt.setString(1, user.getNome());
             stmt.setString(2, user.getDepartamento());
             stmt.setInt(3, user.getIdade());
-            stmt.setString(4, user.getCidade());
-            stmt.setString(5, user.getEstado());
+            stmt.setString(4, user.getCidade());            
             stmt.executeUpdate();
             System.out.println("Registro incluido com sucesso.");
 
