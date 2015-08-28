@@ -6,7 +6,7 @@
 
 package teste;
 
-import bd.*;
+
 import java.util.Scanner;
 import bd.BdUsuario;
 import java.sql.SQLException;
