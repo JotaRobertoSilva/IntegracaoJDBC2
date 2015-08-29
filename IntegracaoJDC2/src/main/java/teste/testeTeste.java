@@ -37,7 +37,7 @@ public class testeTeste {
       } else if (opcao == 2) {
         bd.read();
       } else if(opcao == 3) {
-        bd.delete();
+        bd.excluir();
       } else if (opcao == 9) {
         System.exit(0);
       } else {

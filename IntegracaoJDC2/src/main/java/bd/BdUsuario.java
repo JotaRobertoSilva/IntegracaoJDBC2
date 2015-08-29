@@ -119,5 +119,49 @@ public class BdUsuario {
             }
         }
     }
+       
+     public void excluir() throws SQLException{
+         
+        PreparedStatement stmt = null;
+        Connection conn = null;
 
-}
+        Usuario user = new Usuario();
+
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Digite o NOME que deseja excluir: ");
+        user.setNome(input.nextLine());
+        
+        String sql = "DELETE INTO CADPESSOA where NOME=?";
+
+        
+        try {
+            conn = Conexao.abreConexao();
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, user.getNome());
+            stmt.setString(2, user.getDepartamento());
+            stmt.setInt(3, user.getIdade());
+            stmt.setString(4, user.getCidade());
+            stmt.executeUpdate();
+            System.out.println("Registro excluído com sucesso.");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+     }
+ }
