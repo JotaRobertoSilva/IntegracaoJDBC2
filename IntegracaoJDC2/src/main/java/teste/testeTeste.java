@@ -27,6 +27,7 @@ public class testeTeste {
       System.out.println("********** INFORME UMA OPÇÃO **********");      
       System.out.println("1 -  Inserir registro");
       System.out.println("2 -  Listar agenda");
+      System.out.println("3 - Deletar registro");
       System.out.println("9 -  SAIR");
       System.out.print("Opção: ");
       int opcao = entrada.nextInt();
@@ -35,6 +36,8 @@ public class testeTeste {
         bd.inserir();
       } else if (opcao == 2) {
         bd.read();
+      } else if(opcao == 3) {
+        bd.delete();
       } else if (opcao == 9) {
         System.exit(0);
       } else {
