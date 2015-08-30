@@ -17,7 +17,9 @@ public class testeCon {
     
     public static void main(String[] args) {
         Conexao conexao = new Conexao();
-        Connection conn = conexao.abreConexao();
+        
+        Connection conn = Conexao.abreConexao();
+//Connection conn = conexao.abreConexao();
     }
     
 }

@@ -36,7 +36,7 @@ public class BdUsuario {
         System.out.println("");
 
         String sql = "INSERT INTO CADPESSOA(NOME,DEPARTAMENTO,IDADE,CIDADE) VALUES(?,?,?,?)";
-   
+
         try {
 
             conn = Conexao.abreConexao();
@@ -85,17 +85,16 @@ public class BdUsuario {
 
             while (rs.next()) {
 
-                
                 user.setIdnome(rs.getInt("IDNOME"));
                 user.setNome(rs.getString("NOME"));
                 user.setIdade(rs.getInt("IDADE"));
                 user.setDepartamento(rs.getString("DEPARTAMENTO"));
                 user.setCidade(rs.getString("CIDADE"));
 
-                System.out.print(user.getIdnome()+" ; ");
-                System.out.print(user.getNome()+" ; ");
-                System.out.print(user.getIdade()+" ; ");
-                System.out.print(user.getDepartamento()+" ; ");
+                System.out.print(user.getIdnome() + " ; ");
+                System.out.print(user.getNome() + " ; ");
+                System.out.print(user.getIdade() + " ; ");
+                System.out.print(user.getDepartamento() + " ; ");
                 System.out.print(user.getCidade());
                 System.out.println("");
             }
@@ -120,33 +119,53 @@ public class BdUsuario {
             }
         }
     }
-       
-     public void excluir() throws SQLException{
-         
-        PreparedStatement stmt = null;
+
+    public boolean remover(int id) {
+
+        Statement stmt = null;
         Connection conn = null;
-
-        Usuario user = new Usuario();
-
         Scanner input = new Scanner(System.in);
-        
-        System.out.print("Digite o ID que deseja excluir: ");
-        
-        String sql = "Delete fron CADPESSOA where IDNOME = ?";
+        Usuario funcionario = new Usuario();
 
-        
+        String sql = "SELECT IDNOME FROM CADPESSOA WHERE IDNOME = " + id;
+
         try {
+
             conn = Conexao.abreConexao();
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, user.getNome());
-            stmt.setString(2, user.getDepartamento());
-            stmt.setInt(3, user.getIdade());
-            stmt.setString(4, user.getCidade());
-            stmt.executeUpdate();
-            System.out.println("Registro excluído com sucesso.");
+            stmt = conn.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                if (id == rs.getInt("IDNOME")) {
+
+                    sql = "DELETE FROM CADPESSOA WHERE IDNOME = " + id;
+                    stmt.executeUpdate(sql);
+                    return true;
+                }
+
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-     }
- }
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+        return false;
+    }
+
+}
