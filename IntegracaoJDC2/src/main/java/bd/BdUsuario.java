@@ -130,10 +130,9 @@ public class BdUsuario {
 
         Scanner input = new Scanner(System.in);
         
-        System.out.print("Digite o NOME que deseja excluir: ");
-        user.setNome(input.nextLine());
+        System.out.print("Digite o ID que deseja excluir: ");
         
-        String sql = "DELETE INTO CADPESSOA where NOME=?";
+        String sql = "Delete fron CADPESSOA where IDNOME = ?";
 
         
         try {
@@ -148,21 +147,6 @@ public class BdUsuario {
 
         } catch (SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (stmt != null) {
-                try {
-                    stmt.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+        } 
      }
  }
