@@ -36,6 +36,7 @@ public class BdUsuario {
         System.out.println("");
 
         String sql = "INSERT INTO CADPESSOA(NOME,DEPARTAMENTO,IDADE,CIDADE) VALUES(?,?,?,?)";
+   
         try {
 
             conn = Conexao.abreConexao();
