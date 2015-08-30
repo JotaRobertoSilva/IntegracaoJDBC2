@@ -15,7 +15,7 @@ import java.sql.SQLException;
  *
  * @author k026587
  */
-public class testeTeste {
+public class RunTeste {
     
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
       
